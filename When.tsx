@@ -31,12 +31,13 @@ export const When: FC<Props> = ({
   state2 = undefined,
 }) => {
   if (and) {
-    if (!state || !state2) return null
+    if (state && state2) return <>{children}</>
   } else if (or) {
-    if (!state && !state2) return null
+    if (state || state2) return <>{children}</>
   } else {
-    if (!state) return null
+    if (state) return <>{children}</>
   }
 
-  return <>{children}</>
+  return null
 }
+
